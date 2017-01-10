@@ -23,6 +23,7 @@ const findFreeSchedule = (busyTime, currentTime, dayStartTime, dayEndTime, coach
       let busyEndTime = currentAppt.end
 
       if(busyStartTime >= currentTime) {
+        console.log('this is the current time', currentTime)
         freetimes.push({start:currentTime, end: busyStartTime})
         currentTime = busyEndTime
       } else if(busyEndTime >= currentTime) {

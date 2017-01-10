@@ -1,8 +1,8 @@
 const moment = require('moment')
 
-const busyTimeData = [ 
-  { start: '2016-12-14T18:30:00Z', end: '2016-12-14T19:30:00Z' },
-  { start: '2016-12-14T23:00:00Z', end: '2016-12-15T00:00:00Z' },
+const busyTimeData = [
+  { start: '2017-01-10T18:30:00Z', end: '2017-01-10T19:30:00Z' },
+  { start: '2017-01-10T23:00:00Z', end: '2017-01-10T00:00:00Z' },
 ]
 
 const freeTimeData = [
@@ -23,8 +23,15 @@ const freeTimeData2 = [
     end: moment.parseZone("2016-12-14T17:30:00.000-08:00") }
 ]
 
-module.exports = { 
-  busyTimeData, 
-  freeTimeData, 
-  freeTimeData2
+const coachTestData = {
+  github_handle: 'pllearns',
+  email: 'pllearns@gmail.com',
+  calendar_ids: ['pllearns@gmail.com']
+}
+
+module.exports = {
+  busyTimeData,
+  freeTimeData,
+  freeTimeData2,
+  coachTestData
 }

@@ -1,19 +1,24 @@
 const { expect, app, chai, chaiDateTime } = require('../setup')
 const moment = require('moment')
 const {
-  busyTimeData, 
-  freeTimeData, 
-  freeTimeData2
+  busyTimeData,
+  freeTimeData,
+  freeTimeData2,
+  coachTestData
 } = require('./appointmentTestData')
 const {
-  findFreeSchedule, 
-  findNextAppointment 
+  findFreeSchedule,
+  findNextAppointment
 } = require('../../models/appointment')
 
 describe('Appointment Models: ', () => {
   describe('findFreeSchedule', () => {
     it('converts Gcal busytimes to Freetime during LG business hours', () => {
-      const freeTime = findFreeSchedule(busyTimeData)
+      console.log('busyTimeData--->', busyTimeData)
+      const currentTime = moment()
+      const dayStartTime = currentTime.clone().startOf('day').tz('America/Los_Angeles').add({h:9})
+      const dayEndTime = currentTime.clone().startOf('day').tz('America/Los_Angeles').add({h:17.5})
+      const freeTime = findFreeSchedule(busyTimeData, currentTime, dayStartTime, dayEndTime, coachTestData)
       expect(freeTime).to.be.an('array')
       expect(freeTime.length).to.eql(3)
       expect(freeTime[0]).to.be.an('object')
@@ -41,7 +46,7 @@ describe('Appointment Models: ', () => {
 
   describe('findNextAppointment', () => {
     it('should find the first 30min appointment available', () => {
-      const timeSlot = findNextAppointment(freeTimeData)
+      const timeSlot = findNextAppointment(busyTimeData, freeTimeData, coachTestData)
 
       expect(timeSlot).to.be.an('object')
       expect(timeSlot).to.eql({
