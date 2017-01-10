@@ -1,8 +1,12 @@
 const moment = require('moment')
 
 const busyTimeData = [
-  { start: '2017-01-10T18:30:00Z', end: '2017-01-10T19:30:00Z' },
-  { start: '2017-01-10T23:00:00Z', end: '2017-01-10T00:00:00Z' },
+  { start: moment().startOf('day').tz('America/Los_Angeles').add({h:10.5}),
+    end: moment().startOf('day').tz('America/Los_Angeles').add({h:11.5})
+  },
+  { start: moment().startOf('day').tz('America/Los_Angeles').add({h:15}),
+    end: moment().startOf('day').tz('America/Los_Angeles').add({h:16})
+  },
 ]
 
 const freeTimeData = [
