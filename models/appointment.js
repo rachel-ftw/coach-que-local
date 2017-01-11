@@ -15,17 +15,23 @@ const findFreeSchedule = (busyTime, currentTime, dayStartTime, dayEndTime, coach
     }
   })
   console.log(`busyTime=========== ${coach.github_handle}`, busyTime)
-  if (busyTime.length == 0) {
+  if (busyTime.length === 0) {
     return [{start: dayStartTime, end: dayEndTime}];
   } else {
     return busyTime.reduce((freetimes, currentAppt) => {
       let busyStartTime = currentAppt.start
       let busyEndTime = currentAppt.end
-
+      console.log('here')
       if(busyStartTime >= currentTime) {
+        console.log('currentTime1', currentTime)
+        console.log('busyStartTime1', busyStartTime)
+        console.log('busyEndTime1', busyEndTime)
         freetimes.push({start:currentTime, end: busyStartTime})
         currentTime = busyEndTime
       } else if(busyEndTime >= currentTime) {
+        console.log('currentTime2', currentTime.toISOString())
+        console.log('busyStartTime2', busyStartTime.toISOString())
+        console.log('busyEndTime2', busyEndTime.toISOString())
         currentTime = busyEndTime
       }
 
@@ -34,6 +40,9 @@ const findFreeSchedule = (busyTime, currentTime, dayStartTime, dayEndTime, coach
       //Note: have to do this to accommodate for the time between the final busy slice
       //and the dayEndTime
       if (busyTime.length === counter && !currentTime.isSame(dayEndTime)){
+        console.log('currentTime3', currentTime.toISOString())
+        console.log('busyStartTime3', busyStartTime.toISOString())
+        console.log('busyEndTime3', busyEndTime.toISOString())
         freetimes.push({start:currentTime, end:dayEndTime})
       }
       console.log(`your freetimes are: ${coach.github_handle}`, freetimes)

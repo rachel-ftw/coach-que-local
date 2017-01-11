@@ -1,8 +1,19 @@
 const moment = require('moment')
 
+// const originalBusyTimeData = [
+//   { start: '2016-12-14T18:30:00Z', end: '2016-12-14T19:30:00Z' },
+//   { start: '2016-12-14T23:00:00Z', end: '2016-12-15T00:00:00Z' },
+// ]
+
 const busyTimeData = [ 
-  { start: '2016-12-14T18:30:00Z', end: '2016-12-14T19:30:00Z' },
-  { start: '2016-12-14T23:00:00Z', end: '2016-12-15T00:00:00Z' },
+  {
+    start: moment().startOf('day').tz('America/Los_Angeles').add({h:10.5}),
+    end: moment().startOf('day').tz('America/Los_Angeles').add({h:11.5})
+  },
+  {
+    start: moment().startOf('day').tz('America/Los_Angeles').add({h:15}),
+    end: moment().startOf('day').tz('America/Los_Angeles').add({h:16})
+  },
 ]
 
 const freeTimeData = [
@@ -23,8 +34,15 @@ const freeTimeData2 = [
     end: moment.parseZone("2016-12-14T17:30:00.000-08:00") }
 ]
 
+const coachTestData = {
+  github_handle: 'nicosesma',
+  email: 'nicosm310@gmail.com',
+  calendarIds: ['nicosm310@gmail.com']   
+}
+
 module.exports = { 
   busyTimeData, 
   freeTimeData, 
-  freeTimeData2
+  freeTimeData2,
+  coachTestData,
 }
