@@ -11,7 +11,7 @@ const findFreeSchedule = (busyTime, currentTime, dayStartTime, dayEndTime, coach
   busyTime = busyTime.map((time) => {
     return {
       start: moment(time.start).tz('America/Los_Angeles'),
-      end: moment(time.end).tz('America/Los_Angeles')
+      end: moment(time.end).tz('America/Los_Angeles').add(10, 'm')
     }
   })
   console.log(`busyTime=========== ${coach.github_handle}`, busyTime)
