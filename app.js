@@ -11,6 +11,7 @@ const enforce = require('express-sslify');
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const webpackConfig = require('./webpack.config.js')
+require('babel-polyfill');
 
 const coach = require('./routes/coach')
 const appointment = require('./routes/appointment')
