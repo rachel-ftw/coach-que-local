@@ -45,11 +45,10 @@ export default class CoachLanding extends Component {
     const { coach, updateCoachCallback } = this.props
 
     let coachOptions
-    let newCoachOptions
 
     if (coach === null) {
       if (!clickedOnGoogle) {
-        newCoachOptions = <center>
+        coachOptions = <center>
           <Link to="/google/auth" target="_blank">
             <RaisedButton
               label="Login to Google Calendar"
@@ -67,7 +66,7 @@ export default class CoachLanding extends Component {
         </center>
       }
       else if (clickedOnGoogle) {
-        newCoachOptions = <center>
+        coachOptions = <center>
           <ActivateCoach
             createCoach={true}
             updateCoachCallback={updateCoachCallback}
@@ -80,9 +79,7 @@ export default class CoachLanding extends Component {
           </Link>
         </center>
       }
-    }
-
-    if (coach) {
+    } else {
       coachOptions = <center>
         <ActivateCoach
           activeCoach={coach.active_coach}
@@ -103,6 +100,6 @@ export default class CoachLanding extends Component {
         <div>{this.renderAppointmentList()}</div>
       </center>
     }
-    return ( newCoachOptions || coachOptions )
+    return coachOptions
   }
 }
