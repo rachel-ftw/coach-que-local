@@ -8,11 +8,6 @@ const userGuide = <FontIcon className="material-icons">User Guide</FontIcon>;
 const bugReport = <FontIcon className="material-icons">Report Bugs</FontIcon>;
 
 export default class BottomNavigationLink extends Component {
-  state = {
-    selectedIndex: 0,
-  };
-
-  select = (index) => this.setState({selectedIndex: index});
 
   render() {
     const reportLink = `https://github.com/GuildCrafts/coach-que/issues`
@@ -20,18 +15,18 @@ export default class BottomNavigationLink extends Component {
     return (
       <div className="BottomNavigationLink">
         <Paper zDepth={1}>
-          <BottomNavigation selectedIndex={this.state.selectedIndex}>
+          <BottomNavigation >
             <BottomNavigationItem
               label="Start Here"
               icon={userGuide}
               href={guideLink}
-              onTouchTap={() => this.select(0)}
+              target="_blank"
             />
             <BottomNavigationItem
               label="Issues"
               icon={bugReport}
               href={reportLink}
-              onTouchTap={() => this.select(1)}
+              target="_blank"
             />
           </BottomNavigation>
         </Paper>
