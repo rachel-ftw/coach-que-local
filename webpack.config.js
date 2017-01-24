@@ -20,6 +20,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   }
 })
 
+
 module.exports = {
   entry: ['./client/main.js'],
   module: {
